@@ -5,4 +5,3 @@ plotly==5.4.0
 pandas<1.2.4
 webdriver_manager==3.5.2
 nltk==3.6.1
-time
