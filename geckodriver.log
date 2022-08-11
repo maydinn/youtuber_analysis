@@ -1,0 +1,134 @@
+1658692096092	geckodriver	INFO	Listening on 127.0.0.1:49762
+1658692099158	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49763" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileYJyIS3"
+1658692099903	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:49763
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileYJyIS3\\search.json.mozlz4", (void 0)))
+1658692103339	Marionette	INFO	Listening on port 49768
+DevTools listening on ws://localhost:49763/devtools/browser/6f0509b2-5b00-4928-a310-ae7b23662453
+1658692103407	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[2022-07-24T19:48:48Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+1658692128808	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[2022-07-24T19:48:48Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:48:49Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:48:51Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[Child 4744, MediaDecoderStateMachine #1] WARNING: 22fc1e18780 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:317
+[Child 4744, MediaDecoderStateMachine #1] WARNING: 22fc1e18780 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:317
+[2022-07-24T19:49:33Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:49:33Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:49:33Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:49:33Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+1658692173955	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+SourceActor threw an exception: [Exception... "Failed to open input source 'chrome://browser/content/certerror/aboutNetErrorCodes.js'"  nsresult: "0x805303f4 (<unknown>)"  location: "JS frame :: resource://devtools/shared/DevToolsUtils.js :: mainThreadFetch/< :: line 699"  data: yes]
+Stack: mainThreadFetch/<@resource://devtools/shared/DevToolsUtils.js:699:15
+mainThreadFetch@resource://devtools/shared/DevToolsUtils.js:545:10
+_fetchURLContents@resource://devtools/server/actors/utils/sources-manager.js:446:22
+urlContents@resource://devtools/server/actors/utils/sources-manager.js:410:17
+_resurrectSource@resource://devtools/server/actors/thread.js:2121:35
+addAllSources@resource://devtools/server/actors/thread.js:1482:14
+watch@resource://devtools/server/actors/resources/sources.js:62:17
+watchResources@resource://devtools/server/actors/resources/index.js:288:19
+_watchTargetResources@resource://devtools/server/actors/targets/target-actor-mixin.js:161:24
+addSessionDataEntry@resource://devtools/server/actors/targets/target-actor-mixin.js:53:20
+_addSessionDataEntry@resource://devtools/server/connectors/js-window-actor/DevToolsFrameChild.jsm:556:24
+receiveMessage@resource://devtools/server/connectors/js-window-actor/DevToolsFrameChild.jsm:465:21
+Line: 699, column: 0
+console.error: ({})
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 699: Failed to open input source 'chrome://browser/content/certerror/aboutNetErrorCodes.js'
+1658692422668	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[2022-07-24T19:53:42Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:53:43Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:53:43Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:53:43Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+JavaScript error: resource://devtools/client/framework/toolbox.js, line 3400: TypeError: data.frameData.id is null
+[2022-07-24T19:55:15Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:55:15Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:55:15Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-24T19:55:15Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+1658692515852	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+console.error: (new TypeError("parent is null", "resource://devtools/client/inspector/shared/style-change-tracker.js", 67))
+TypeError: parent is null: canMutationImpactCurrentStyles@resource://devtools/client/inspector/shared/style-change-tracker.js:67:24
+onMutations@resource://devtools/client/inspector/shared/style-change-tracker.js:84:41
+_emit@resource://devtools/shared/event-emitter.js:242:32
+emit@resource://devtools/shared/event-emitter.js:186:18
+emit@resource://devtools/shared/event-emitter.js:330:18
+getMutations@resource://devtools/client/fronts/walker.js:312:10
+
+[Child 4744, MediaDecoderStateMachine #10] WARNING: 22fc97e3780 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:317
+1658776609731	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[2022-07-25T19:16:49Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:16:49Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:16:49Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:16:49Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1658776653571	Marionette	INFO	Stopped listening on port 49768
+
+###!!! [Parent][PGPUParent] Error: RunMessage(msgname=PGPU::Msg_ShutdownVR) Channel closing: too late to send/recv, messages will be lost
+
+1658776665386	geckodriver	INFO	Listening on 127.0.0.1:50109
+1658776668454	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50110" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileNvD1fY"
+1658776668813	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:50110
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileNvD1fY\\search.json.mozlz4", (void 0)))
+1658776670376	Marionette	INFO	Listening on port 50115
+DevTools listening on ws://localhost:50110/devtools/browser/a5a085ef-fc8c-4e19-b68b-18bc996998e7
+1658776670480	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://consent.youtube.com"
+1658776687061	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[2022-07-25T19:18:07Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:18:07Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:18:07Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:18:08Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[Child 3616, MediaDecoderStateMachine #4] WARNING: 1a7c92818a0 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:317
+[2022-07-25T19:31:08Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:31:08Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:31:08Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:31:08Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+1658777468719	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1658777495651	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[2022-07-25T19:31:35Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:31:35Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:31:35Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T19:31:36Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T20:08:24Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T20:08:24Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T20:08:24Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+[2022-07-25T20:08:24Z ERROR mp4parse] Found 2 nul bytes in "\u{0}\u{0}"
+1658779704227	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1658779802160	Marionette	INFO	Stopped listening on port 50115
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1658779854251	geckodriver	INFO	Listening on 127.0.0.1:50426
+1658779857284	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "50427" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileaewEsb"
+*** You are running in headless mode.
+1658779857903	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:50427
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileaewEsb\\search.json.mozlz4", (void 0)))
+1658779859753	Marionette	INFO	Listening on port 50432
+DevTools listening on ws://localhost:50427/devtools/browser/bbc9ede3-2909-4999-8777-3bf50644acf5
+1658779859956	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1658791103091	addons.xpi	ERROR	System addon update list error Error: Failed downloading XML, status: 0, reason: error
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+1658895672176	addons.xpi	ERROR	System addon update list error Error: Failed downloading XML, status: 0, reason: error
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NotFoundError: Could not move source file(C:\Users\User\AppData\Local\Temp\rust_mozprofileaewEsb\bookmarkbackups\bookmarks-2022-07-29_11_3hSWOC30Q3PGRKcBMALvGA==.jsonlz4) because it does not exist
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NotFoundError: Could not move source file(C:\Users\User\AppData\Local\Temp\rust_mozprofileaewEsb\bookmarkbackups\bookmarks-2022-08-03_11_3hSWOC30Q3PGRKcBMALvGA==.jsonlz4) because it does not exist
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NotFoundError: Could not move source file(C:\Users\User\AppData\Local\Temp\rust_mozprofileaewEsb\bookmarkbackups\bookmarks-2022-08-05_11_3hSWOC30Q3PGRKcBMALvGA==.jsonlz4) because it does not exist
+JavaScript error: , line 0: NotFoundError: Could not move source file(C:\Users\User\AppData\Local\Temp\rust_mozprofileaewEsb\bookmarkbackups\bookmarks-2022-08-06_11_3hSWOC30Q3PGRKcBMALvGA==.jsonlz4) because it does not exist
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NotFoundError: Could not move source file(C:\Users\User\AppData\Local\Temp\rust_mozprofileaewEsb\bookmarkbackups\bookmarks-2022-08-07_11_3hSWOC30Q3PGRKcBMALvGA==.jsonlz4) because it does not exist
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NotFoundError: Could not move source file(C:\Users\User\AppData\Local\Temp\rust_mozprofileaewEsb\bookmarkbackups\bookmarks-2022-08-08_11_3hSWOC30Q3PGRKcBMALvGA==.jsonlz4) because it does not exist
+JavaScript error: , line 0: NotFoundError: Could not move source file(C:\Users\User\AppData\Local\Temp\rust_mozprofileaewEsb\bookmarkbackups\bookmarks-2022-08-08_11_3hSWOC30Q3PGRKcBMALvGA==.jsonlz4) because it does not exist
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: , line 0: NotFoundError: Could not move source file(C:\Users\User\AppData\Local\Temp\rust_mozprofileaewEsb\bookmarkbackups\bookmarks-2022-08-09_11_3hSWOC30Q3PGRKcBMALvGA==.jsonlz4) because it does not exist
