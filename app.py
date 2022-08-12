@@ -13,7 +13,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestRegressor
 import plotly.express as px
 import os
-nltk.download('punkt') 
+#nltk.download('punkt') 
 
 
 
@@ -53,7 +53,7 @@ def main():
      
         
         
-        if link.endswith( '/videos')
+        if link.endswith( '/videos'):
 
             chrome_options = webdriver.ChromeOptions()
             chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
