@@ -225,7 +225,7 @@ def main():
                 
                 
         else:
-            st.sidebar.write('you should enter videos part of the channel')
+            st.sidebar.write('please enter videos part of the channel')
 
             
             
