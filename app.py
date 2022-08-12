@@ -36,7 +36,7 @@ def cleaning(data):
 
 
 def main():
-    st.write(st.__version__)
+    #st.write(st.__version__)
     html_temp = """
     <div style="background-color:tomato;padding:10px">
     <h2 style="color:white;text-align:center;">enter link</h2>
