@@ -47,7 +47,7 @@ def main():
      
     link = st.text_input('link', placeholder = 'https://www.youtube.com/c/<channelname>/videos', key = '1')
     
-    sentence = st.text_input('title for upcoming video', place = 'Trends App in 2022', key = '2')
+    sentence = st.text_input('title for upcoming video', placeholder = 'Trends App in 2022', key = '2')
     
     if st.sidebar.button('Submit'):
      
