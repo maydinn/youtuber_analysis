@@ -45,9 +45,9 @@ def main():
     
     
      
-    link = st.sidebar.text_input('link', key = '1')
+    link = st.text_input('link', placeholder = 'https://www.youtube.com/c/<channelname>/videos', key = '1')
     
-    sentence = st.sidebar.text_input('title for upcoming video', key = '2')
+    sentence = st.text_input('title for upcoming video', place = 'Trends App in 2022', key = '2')
     
     if st.sidebar.button('Submit'):
      
@@ -225,7 +225,8 @@ def main():
                 
                 
         else:
-            st.sidebar.write('please enter videos part of the channel')
+            st.write("""please enter the right version of link as following;
+            https://www.youtube.com/c/<channelname>/videos""")
 
             
             
