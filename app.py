@@ -49,7 +49,7 @@ def main():
     
     sentence = st.text_input('title for upcoming video', placeholder = 'Trends App in 2022', key = '2')
     
-    if st.sidebar.button('Submit'):
+    if st.button('Submit'):
      
         
         
