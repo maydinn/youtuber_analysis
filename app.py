@@ -9,6 +9,7 @@ import time
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestRegressor
 import plotly.express as px
@@ -16,20 +17,23 @@ import os
 
 
 
+word_list = stopwords.fileids()
 
 
 
-
-def cleaning(data):
-    
+def cleaning(data, word):
+    stop_words = stopwords.words(word)
     #1. Tokenize
     text_tokens = word_tokenize(data.lower())   #removed the .lower intentionaly to keep NNP s
     
     #2. Remove Puncs
     tokens_without_punc = [w for w in text_tokens if w.isalpha()]
     
+    #3. Remove stopwords
+    tokens_without_sw = [t for t in tokens_without_punc if t not in stop_words]
+    
     #joining
-    return " ".join(tokens_without_punc)
+    return " ".join(tokens_without_sw)
 
 def views(x):
                 a = x.split(' ')[0]
@@ -79,9 +83,11 @@ def main():
     
     sentence = st.text_input('title for upcoming video', placeholder = 'Trends App in 2022', key = '2')
     
+    word = st.selectbox('language for the given youtube channel', word_list)
+    
     if st.button('Submit'):
         with st.spinner('Wait for it...'):
-            time.sleep(2)
+            time.sleep(1)
         
         
         if link.endswith( '/videos') and link.startswith('https://www.youtube.com/c/'):
@@ -122,7 +128,7 @@ def main():
                 text = []
                 view = []
                 date = []
-                st.write(element[0].text)
+                channel_info = element[0].text
                 for i in element:
 
                     a = i.text.split('\n')
@@ -142,10 +148,11 @@ def main():
                                 else:
                                     text.append(j)
 
-
+                
                 driver.close()
                 df=pd.DataFrame(zip(text, view, date), columns=['text','views','date'])
-            with st.spinner('Getting data...'):
+                st.write(channel_info)
+            with st.spinner('Analysing...'):
                 df.views = df.views.apply(views)
                 df['years_ago']=df.date.apply(lambda x: int(x.split(' ')[0]) if 'year' in x else 0 )
                 df['months_ago']=df.date.apply(lambda x: int(x.split(' ')[0]) if 'month' in x else 0 if 'day' in x or 'week' in x or 'minute' in x else -1 )
@@ -162,7 +169,7 @@ def main():
                 df_d = df[df.days_ago != -1][['views', 'days_ago']].groupby('days_ago').mean().reset_index()
                 df_d.days_ago = df_d.days_ago.astype(str)
 
-                df["text2"] = df.text.apply(cleaning)
+                df["text2"] = df.apply(lambda x: cleaning( x.text, x.lan), 1)
 
                 X = df['text2']
                 y = df['views']
@@ -211,7 +218,7 @@ def main():
                 st.plotly_chart(fig_wo, sharing="streamlit") 
 
             with tab6:
-                pot_views = model.predict(tf_idf_word_vectorizer.transform(pd.Series((cleaning(sentence)))))[0]
+                pot_views = model.predict(tf_idf_word_vectorizer.transform(pd.Series((cleaning(sentence, word)))))[0]
                 text = f'Your pontential views with this title is {pot_views}'
                 st.write(text)
 
@@ -232,7 +239,7 @@ def main():
 #             st.write()'
            
             st.error("""please enter the right version of link as in link box""")
-            st.snow()
+            
 
             
             
