@@ -17,7 +17,7 @@ import os
 
 
 
-word_list = stopwords.fileids()
+word_list = ['english', 'arabic', 'azerbaijani', 'basque', 'bengali', 'catalan', 'chinese', 'danish', 'dutch', 'english', 'finnish', 'french', 'german', 'greek', 'hebrew', 'hinglish', 'hungarian', 'indonesian', 'italian', 'kazakh', 'nepali', 'norwegian', 'portuguese', 'romanian', 'russian', 'slovene', 'spanish', 'swedish', 'tajik', 'turkish']
 
 
 
@@ -168,7 +168,8 @@ def main():
                 df_w.weeks_ago = df_w.weeks_ago.astype(str)
                 df_d = df[df.days_ago != -1][['views', 'days_ago']].groupby('days_ago').mean().reset_index()
                 df_d.days_ago = df_d.days_ago.astype(str)
-
+                df['lan'] = word
+                
                 df["text2"] = df.apply(lambda x: cleaning( x.text, x.lan), 1)
 
                 X = df['text2']
