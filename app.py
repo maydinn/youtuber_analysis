@@ -12,6 +12,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.cluster import KMeans
 import plotly.express as px
 import os
 
@@ -181,26 +182,37 @@ def main():
                 X_tf_idf_word = tf_idf_word_vectorizer.transform(X)
                 model = RandomForestRegressor()
                 model.fit(X_tf_idf_word, y)
-
+                
+                k = KMeans(n_clusters=4)
+                
+                k.fit(df[['views']]) 
+                df['label'] = k.labels_
+                df['label_str']= df.label.astype(str)
+                
+                
                 feature_imp = feature_imp= pd.DataFrame(zip(model.feature_importances_,
                                tf_idf_word_vectorizer.get_feature_names_out()), columns=['value','word']).sort_values('value',ascending=False).head(20)
 
 
+                df_g = df[['views','label']].groupby('label').agg(['count','mean','min', 'max'])
+                df_g.reset_index(inplace=True)
+                df_g.columns = ['Cluster','The Number Videos','Mean Value of Views','Minimum Value of View', 'Max Value of View']
+                df_g = df_g.sort_values('Mean Value of Views', ascending=False)
+                df_g.reset_index(inplace=True, drop = True)
+                
 
                 fig_y = px.bar(df_y, x='years_ago', y='views',height=500)
                 fig_m = px.bar(df_m, x='months_ago', y='views',height=500)
                 fig_w = px.bar(df_w, x='weeks_ago', y='views',height=500)
                 fig_d = px.bar(df_d, x='days_ago', y='views',height=500)
                 fig_wo = px.bar(feature_imp.sort_values('value'), x='value', y= 'word', orientation='h'  )
+                fig_cl = px.scatter(df, 'views', 'label', color='label_str', symbol="label_str" )
 
 
 
 
 
-
-          #  tab_time, tab_word = st.tabs(['time analysis', 'word analysis'])
-
-            tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Year", "Month ", "Week", "Day", 'Effective words', 'Potential Views based on Title',"All"])
+            tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(["Year", "Month ", "Week", "Day", 'Clusters', 'Effective words', 'Potential Views based on Title',"All"])
 
 
             with tab1:
@@ -214,16 +226,20 @@ def main():
 
             with tab4:
                 st.plotly_chart(fig_d, sharing="streamlit")
-
+                
             with tab5:
-                st.plotly_chart(fig_wo, sharing="streamlit") 
+                st.plotly_chart(fig_cl, sharing="streamlit")
+                st.dataframe(df_g )
 
             with tab6:
+                st.plotly_chart(fig_wo, sharing="streamlit") 
+
+            with tab7:
                 pot_views = model.predict(tf_idf_word_vectorizer.transform(pd.Series((cleaning(sentence, word)))))[0]
                 text = f'Your pontential views with this title is {pot_views}'
                 st.write(text)
 
-            with tab7:
+            with tab8:
                 st.plotly_chart(fig_y, sharing="streamlit")
                 st.plotly_chart(fig_m, sharing="streamlit")
                 st.plotly_chart(fig_w, sharing="streamlit")
