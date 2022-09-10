@@ -125,11 +125,11 @@ def main():
     
     
      
-    link = st.text_input('link', placeholder = 'https://www.youtube.com/c/<channelname>/videos', key = '1')
+    link = st.text_input('link*', placeholder = 'https://www.youtube.com/c/<channelname>/videos', key = '1')
     
     sentence = st.text_input('title for upcoming video', placeholder = 'Trends App in 2022', key = '2')
     
-    word = st.selectbox('language for the given youtube channel', word_list)
+    word = st.selectbox('language for the given youtube channel*', word_list)
     
     if st.button('Submit'):
         with st.spinner('Wait for it...'):
