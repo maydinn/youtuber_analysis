@@ -15,6 +15,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.cluster import KMeans
 import plotly.express as px
+from collections import Counter
 import os
 
 
