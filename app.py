@@ -366,7 +366,7 @@ def main():
                 
         else:
             with st.spinner('Wait for it...'):
-                time.sleep(2)
+                time.sleep(1)
                 
             if word == '':
                 st.error("""please enter language of given channel""")
