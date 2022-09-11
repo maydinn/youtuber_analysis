@@ -125,7 +125,12 @@ def main():
                 "to provide a brief shapshot of the a given channel 🐦")
     
     
-     
+    video_file = open('video.mp4', 'rb')
+    video_bytes = video_file.read()
+    
+    with st.expander('How to Use this'):
+        st.video(video_bytes)
+        
     link = st.text_input('link*', placeholder = 'https://www.youtube.com/c/<channelname>/videos', key = '1')
     
     sentence = st.text_input('title for upcoming video', placeholder = 'Trends App in 2022', key = '2')
