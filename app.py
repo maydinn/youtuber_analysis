@@ -122,7 +122,7 @@ def main():
    
     st.title("A Snapshot of Given Youtube Channel ")
     st.markdown("This application is a Streamlit dashboard used "
-                "to provide a brief shapshot of the a given channel 🐦")
+                "to provide a brief shapshot of the a given channel 📊📈")
     
     
     video_file = open('video.mp4', 'rb')
