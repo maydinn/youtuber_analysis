@@ -166,7 +166,7 @@ def word_imp(df):
         return None
 
 
-api_key = API_KEY
+api_key = st.secrets["API_KEY"]
 channel_name = st.text_input('Enter Channel Name')
 
 if st.button("Submit"):
