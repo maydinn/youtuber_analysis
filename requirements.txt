@@ -4,7 +4,7 @@ scikit-learn==1.0.2
 plotly==5.4.0
 requests == 2.28.1
 seaborn == 0.11.1
-re == 2.2.1
+re
 matplotlib == 3.7.2
 
 
