@@ -166,7 +166,8 @@ def word_imp(df):
         return None
 
 
-api_key = st.secrets["API_KEY"]
+# api_key = st.secrets["API_KEY"]
+api_key = 'AIzaSyCAbxKFmOmEoWdN0zeWG7FX0RRjNyBZc9o'
 channel_name = st.text_input('Enter Channel Name')
 
 if st.button("Submit"):
@@ -178,8 +179,8 @@ if st.button("Submit"):
         st.image(ch_info['snippet']['thumbnails']['default']['url'])
         st.write(f"Channel Title: {ch_info['snippet']['title']}")
         st.write(f"Channel active since: {ch_info['snippet']['publishedAt'][:10]}")
-        st.write("Channel Total View: {:,}".format (ch_info['statistics']['viewCount']))
-        st.write(f"Total Subs: {ch_info['statistics']['subscriberCount']:,}")
+        st.write(f"Channel Total View: {int(ch_info['statistics']['viewCount']):,}")
+        st.write(f"Total Subs: {int(ch_info['statistics']['subscriberCount']):,}")
         st.write(f"Total Video: {ch_info['statistics']['videoCount']}")
         
         if ch_id != None:
