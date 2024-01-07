@@ -178,8 +178,8 @@ if st.button("Submit"):
         st.image(ch_info['snippet']['thumbnails']['default']['url'])
         st.write(f"Channel Title: {ch_info['snippet']['title']}")
         st.write(f"Channel active since: {ch_info['snippet']['publishedAt'][:10]}")
-        st.write(f"Channel Total View: {ch_info['statistics']['viewCount']}")
-        st.write(f"Total Subs: {ch_info['statistics']['subscriberCount']}")
+        st.write(f"Channel Total View: {ch_info['statistics']['viewCount']:,}")
+        st.write(f"Total Subs: {ch_info['statistics']['subscriberCount']:,}")
         st.write(f"Total Video: {ch_info['statistics']['videoCount']}")
         
         if ch_id != None:
