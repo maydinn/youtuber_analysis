@@ -303,7 +303,7 @@ if st.button("Submit"):
                     
             with tab5:
  
-                fig5 = px.box(df, x='day', y='View Count', color='hour', hover_name= ['day', 'View Count', 'hour'])
+                fig5 = px.box(df, x='day', y='View Count', color='hour')
                 fig5.update_xaxes(categoryorder='array', categoryarray=desired_order)
                 fig5.update_layout(
                         title="Box Plot of View Count by Days & Hours ",
