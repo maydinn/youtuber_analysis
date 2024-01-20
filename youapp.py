@@ -193,7 +193,7 @@ if st.button("Submit"):
             df['date'] = df['Published At'].dt.date
             df['hour'] = df['Published At'].dt.hour
             df['day'] = df['Published At'].dt.day_name()
-            df = pd.read_csv('data.csv')
+       
             df_s = df[df.duration <= 1 ]
             df = df[df.duration > 1 ]
 
