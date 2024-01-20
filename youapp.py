@@ -10,6 +10,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.svm import SVR
 from sklearn.feature_extraction.text import TfidfVectorizer
+import plotly.express as px
 
 
 def get_channel_info(api_key, channel_name):
@@ -182,7 +183,7 @@ if st.button("Submit"):
         st.write(f"Channel Total View: {int(ch_info['statistics']['viewCount']):,}")
         st.write(f"Total Subs: {int(ch_info['statistics']['subscriberCount']):,}")
         st.write(f"Total Video: {ch_info['statistics']['videoCount']}")
-        
+
         if ch_id != None:
             df = get_channel_videos(api_key, ch_id)
 
@@ -192,14 +193,16 @@ if st.button("Submit"):
             df['date'] = df['Published At'].dt.date
             df['hour'] = df['Published At'].dt.hour
             df['day'] = df['Published At'].dt.day_name()
+            df = pd.read_csv('data.csv')
             df_s = df[df.duration <= 1 ]
             df = df[df.duration > 1 ]
+
             
             if len(df)> 10:
                 pos_co, neg_co, pos_w, neg_w = word_imp(df)
             if len(df_s) > 10:
                 pos_co_s, neg_co_s, pos_w_s, neg_w_s = word_imp(df_s)
-            tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['Table', 'Relation View and Duration', 'Views among Published Hour', 'Views among Published Days of Week', 'Postive Words', 'Negative Words'])
+            tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Table', 'Relation View and Duration', 'Views among Published Hours', 'Views among Published Days of Week', 'Views among Published Days of Week & Hours','Postive Words', 'Negative Words'])
             with tab1:
                 st.write(df[['Title', 'View Count', 'date']].sort_values('View Count',ascending
 =False).reset_index(drop=True))
@@ -209,82 +212,164 @@ if st.button("Submit"):
                 
             with tab2:
                 if len(df) > 10:                 
-                    fig1 = sns.lmplot(x="duration", y="View Count", data=df)
-                    st.pyplot(fig1)
+                    fig2 = px.scatter(df, x='duration', y='View Count', trendline="ols", labels={'duration': 'Duration', 'View Count': 'View Count'})
+                    fig2.update_layout(
+                        title="Scatter Plot with Trend Line by Duration and View Count",
+                        xaxis_title="Duration",
+                        yaxis_title="View Count",
+                        
+                    )
+
+                    st.plotly_chart(fig2)
                 else:
                     st.write('Not enough data')
                     
                 expander = st.expander('See for Shorts')
                 if len(df_s) > 10:
-                    fig1_1 = sns.lmplot(x="duration", y="View Count", data=df_s)                    
-                    expander.pyplot(fig1_1)
+                    fig2_1 = px.scatter(df_s, x='duration', y='View Count', trendline="ols", labels={'duration': 'Duration', 'View Count': 'View Count'})
+                    fig2_1.update_layout(
+                        title="Scatter Plot with Trend Line by Duration and View Count for Shorts",
+                        xaxis_title="Duration",
+                        yaxis_title="View Count",
+                        
+                    )
+
+                    expander.plotly_chart(fig2_1)
                 else:
                     expander.write('Not enough data')
                 
             with tab3:
                 if len(df) > 10:   
-                    st.write('')
-                    fig2, ax2 = plt.subplots()
-                    sns.boxplot(x="hour", y="View Count", data=df)
-                    st.pyplot(fig2)
+                   # fig2, ax2= plt.subplots()
+                    fig3 = px.box(df, x="hour", y="View Count")
+
+                    
+                    fig3.update_layout(
+                        title="Box Plot of View Count by Hour",
+                        xaxis_title="Hour",
+                        yaxis_title="View Count",
+                        
+                    )
+                    st.plotly_chart(fig3)
                 else:
                     st.write('Not enough data')
                 expander = st.expander('See for Shorts')
                 if len(df_s) > 10:
-                    fig2_1, ax2_1 = plt.subplots()
-                    sns.boxplot(x="hour", y="View Count", data=df_s)
-                    expander.pyplot(fig2_1)
+                    fig3_1 = px.box(df_s, x="hour", y="View Count")
+                    
+                    fig3_1.update_layout(
+                        title="Box Plot of View Count by Hour for Shorts",
+                        xaxis_title="Hour",
+                        yaxis_title="View Count",
+                       
+                    )
+                    expander.plotly_chart(fig3_1)
                 else:
                     expander.write('Not enough data')
 
 
-                
+            desired_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']    
             with tab4:
-                desired_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+                
                 
                 if len(df) > 10: 
-                    fig3, ax3 = plt.subplots()
-                    sns.boxplot(x="day", y="View Count", data=df, order=desired_order)
-                    st.pyplot(fig3)
+                    fig4 = px.box(df, x="day", y="View Count")
+                    fig4.update_xaxes(categoryorder='array', categoryarray=desired_order)
+                    fig4.update_layout(
+                        title="Box Plot of View Count by Day",
+                        xaxis_title="Day",
+                        yaxis_title="View Count",
+                       
+                    )
+                    
+                    st.plotly_chart(fig4)
+     
                 else:
                     st.write('Not enough data')
                 expander = st.expander('See for Shorts')
                 if len(df_s) > 10:
-                    fig3_1, ax3_1 = plt.subplots()
-                    sns.boxplot(x="day", y="View Count", data=df_s, order=desired_order)
-                    expander.pyplot(fig3_1)
+                    fig4_1 = px.box(df_s, x="day", y="View Count")
+                    fig4_1.update_xaxes(categoryorder='array', categoryarray=desired_order)
+                    fig4_1.update_layout(
+                        title="Box Plot of View Count by Day for Shorts",
+                        xaxis_title="Day",
+                        yaxis_title="View Count",
+                   
+                    )
+                    
+                    expander.plotly_chart(fig4_1)
                 else:
                     expander.write('Not enough data')
                     
             with tab5:
+ 
+                fig5 = px.box(df, x='day', y='View Count', color='hour')
+                fig5.update_xaxes(categoryorder='array', categoryarray=desired_order)
+                fig5.update_layout(
+                        title="Box Plot of View Count by Days & Hours ",
+                        xaxis_title="Day",
+                        yaxis_title="View Count",
+                   
+                    )
+                st.plotly_chart(fig5)
+#                 pivot_table = df.pivot_table(values='View Count', index='day', columns='hour', aggfunc='mean').fillna(0)
+#                 st.write(pivot_table)
+                expander = st.expander('See for Shorts')
+                if len(df_s) > 10:
+                    fig5_1 = px.box(df_s, x='day', y='View Count', color='hour')
+                    fig5_1.update_xaxes(categoryorder='array', categoryarray=desired_order)
+                    fig5_1.update_layout(
+                        title="Box Plot of View Count by Days & Hours for Shorts",
+                        xaxis_title="Day",
+                        yaxis_title="View Count",
+                   
+                    )
+                    
+                    expander.plotly_chart(fig5_1)
+                else:
+                    expander.write('Not enough data')
+
+                    
+            with tab6:
                 if len(df) > 10:                  
-                    fig4, ax4 = plt.subplots()
-                    sns.barplot(x=pos_co, y=pos_w)
-                    st.pyplot(fig4)
+                    fig4 = px.bar(x=pos_co, y=pos_w, labels={'x': 'Values', 'y':'Words'}, title='Bar Plot for Positive Words')
+                    fig4.update_layout(yaxis=dict(tickmode='array', tickvals=pos_w, ticktext=pos_w))
+                    fig4.update_xaxes(title_text='Values')
+                    fig4.update_yaxes(title_text='Positive Words')
+                    st.plotly_chart(fig4)
                 else:
                     st.write('Not enough data')
                 expander = st.expander('See for Shorts')
                 if len(df_s) > 10:                    
-                    fig4_1, ax4_1 = plt.subplots()
-                    sns.barplot(x=pos_co_s, y=pos_w_s)
-                    expander.pyplot(fig4_1)
+                    fig4 = px.bar(x=pos_co_s, y=pos_w_s, labels={'x': 'Values', 'y':'Words'}, title='Bar Plot for Positive Words')
+                    fig4.update_layout(yaxis=dict(tickmode='array', tickvals=pos_w_s, ticktext=pos_w_s))
+                    fig4.update_xaxes(title_text='Values')
+                    fig4.update_yaxes(title_text='Positive Words')
+                    expander.plotly_chart(fig4)
                 else:
                     expander.write('Not enough data')
                     
-            with tab6:
-                if len(df) > 10: 
-                    fig5, ax5 = plt.subplots()
-                    sns.barplot(x=neg_co, y=neg_w)
-                    st.pyplot(fig5)
+
+
+                    
+            with tab7:
+                if len(df) > 10:
+                    fig5 = px.bar(x=neg_co, y=neg_w, labels={'x': 'Values', 'y':'Words'}, title='Bar Plot for Negative Words')
+                    fig5.update_layout(yaxis=dict(tickmode='array', tickvals=neg_w, ticktext=neg_w))
+                    fig5.update_xaxes(title_text='Values')
+                    fig5.update_yaxes(title_text='Negative Words')
+                    st.plotly_chart(fig5)
                 else:
                     st.write('Not enough data')
                     
                 expander = st.expander('See for Shorts')
                 
                 if len(df_s) > 10:
-                    fig5_1, ax5_1 = plt.subplots()
-                    sns.barplot(x=neg_co_s, y=neg_w_s)
-                    expander.pyplot(fig5_1)
+                    fig5 = px.bar(x=neg_co_s, y=neg_w_s, labels={'x': 'Values', 'y':'Words'}, title='Bar Plot for Negative Words')
+                    fig5.update_layout(yaxis=dict(tickmode='array', tickvals=neg_w_s, ticktext=neg_w_s))
+                    fig5.update_xaxes(title_text='Values')
+                    fig5.update_yaxes(title_text='Negative Words')
+                    expander.plotly_chart(fig5)
                 else:
                     expander.write('Not enough data')
                 
